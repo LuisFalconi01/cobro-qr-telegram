@@ -16,8 +16,9 @@ document.getElementById('paymentQr').addEventListener('click',confirmDeuna);
 document.getElementById('paymentQr').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();confirmDeuna();}});
 form.addEventListener('submit',async e=>{e.preventDefault();const button=document.getElementById('submit');button.disabled=true;errorBox.classList.add('hidden');
 try{const response=await fetch('/api/payment-requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:document.getElementById('amount').value,detail:document.getElementById('detail').value})});const data=await response.json();if(!response.ok)throw new Error(data.error||'No se pudo enviar la solicitud.');document.getElementById('formStep').classList.add('hidden');document.getElementById('waitingStep').classList.remove('hidden');
-setTimeout(()=>{document.getElementById('shownAmount').textContent='Monto solicitado: $'+Number(document.getElementById('amount').value).toFixed(2);document.getElementById('waitingStep').classList.add('hidden');document.getElementById('qrStep').classList.remove('hidden');},10000);
+setTimeout(()=>{document.getElementById('shownAmount').textContent='Monto solicitado: $'+Number(document.getElementById('amount').value).toFixed(2);document.getElementById('waitingStep').classList.add('hidden');document.getElementById('qrStep').classList.remove('hidden');},5000);
 }catch(err){errorBox.textContent=err.message;errorBox.classList.remove('hidden');button.disabled=false;}});
 </script></body></html>
+
 
 
