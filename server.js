@@ -34,6 +34,6 @@ app.post('/api/payment-requests', async (req, res) => {
   }
 });
 
-app.listen(port, () => console.log(`PagoQR disponible en http://localhost:${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`PagoQR disponible en http://localhost:${port} y en la red local por la IP de este equipo`));
 
 
